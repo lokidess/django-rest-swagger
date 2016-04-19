@@ -1,13 +1,17 @@
 import os
 from django.conf import settings
 from django.utils import six
-from django.utils.importlib import import_module
 from django.core.urlresolvers import RegexURLResolver, RegexURLPattern
 from django.contrib.admindocs.views import simplify_regex
 
 from rest_framework.views import APIView
 
 from .apidocview import APIDocView
+
+try:
+    from django.utils.importlib import import_module
+except ImportError:
+    from importlib import import_module
 
 
 class UrlParser(object):
